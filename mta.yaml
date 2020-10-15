@@ -1,0 +1,41 @@
+## Generated mta.yaml based on yo sap-partner-eng version 0.3.9
+## appName = dbo
+## language=nodejs; multiTenant=false
+## approuter=dbo-app
+_schema-version: '3.1'
+ID: dbo
+version: 0.0.1
+description: DB Only
+parameters:
+   enable-parallel-deployments: true
+  
+  
+modules:
+
+### New Modules Here ###
+
+# cf push dbo-hdb -p db -k 512M -m 512M -u none ; sleep 60 ; cf stop dbo-hdb
+ - name: dbo-hdb
+   type: hdb
+   path: db
+   build-parameters:
+      # Don't package the dependencies if you're running into EINTEGRITY issues
+      ignore: ["default-env.json","package-lock.json", "node_modules/"]
+      # Suppress the calling of npm install by listing no commands
+      builder: custom
+      commands: []
+   parameters:
+      memory: 512M
+      disk-quota: 512M
+      #host: ${org}-${space}-dbo-hdb
+      #domain: cfapps.us10.hana.ondemand.com
+   requires:
+    - name: dbo-hdi
+
+resources:
+
+ - name: dbo-hdi
+   type: com.sap.xs.hdi-container
+   parameters:
+      service-name: DBO_HDI
+

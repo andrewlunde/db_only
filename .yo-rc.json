@@ -1,0 +1,21 @@
+{
+  "generator-sap-partner-eng": {
+    "package_version": "0.3.9",
+    "project_name": "db_only",
+    "app_name": "dbo",
+    "app_desc": "DB Only",
+    "router_name": "dbo-app",
+    "domain_name": "cfapps.us10.hana.ondemand.com",
+    "router_path": "app",
+    "database_path": "db",
+    "services_path": "srv",
+    "uaa_res_name": "dbo-uaa",
+    "uaa_svc_name": "DBO_UAA",
+    "database_name": "dbo-hdb",
+    "db_schema_name": "",
+    "hdi_res_name": "dbo-hdi",
+    "hdi_svc_name": "DBO_HDI",
+    "sampledata_provided": true,
+    "hanacloud_compatible": false
+  }
+}
